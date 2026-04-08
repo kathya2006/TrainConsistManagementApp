@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 public class Main {
 
@@ -7,31 +6,34 @@ public class Main {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // Create ArrayList for passenger bogies
-        List<String> passengerBogies = new ArrayList<>();
+        // Create LinkedList for train consist
+        LinkedList<String> trainConsist = new LinkedList<>();
 
-        // Add bogies (CREATE)
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        // Add bogies
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
 
-        // Display bogies after insertion (READ)
-        System.out.println("Bogies after addition:");
-        System.out.println(passengerBogies);
+        System.out.println("Initial train consist:");
+        System.out.println(trainConsist);
 
-        // Remove a bogie (DELETE)
-        passengerBogies.remove("AC Chair");
-        System.out.println("\nAfter removing 'AC Chair':");
-        System.out.println(passengerBogies);
+        // Insert Pantry Car at position 2 (index starts from 0)
+        trainConsist.add(2, "Pantry Car");
 
-        // Check existence (SEARCH)
-        boolean exists = passengerBogies.contains("Sleeper");
-        System.out.println("\nDoes 'Sleeper' exist? " + exists);
+        System.out.println("\nAfter inserting Pantry Car at position 2:");
+        System.out.println(trainConsist);
 
-        // Final list state
-        System.out.println("\nFinal bogie list:");
-        System.out.println(passengerBogies);
+        // Remove first and last bogies
+        trainConsist.removeFirst();
+        trainConsist.removeLast();
 
-        // Program continues...
+        System.out.println("\nAfter removing first and last bogies:");
+        System.out.println(trainConsist);
+
+        // Final state
+        System.out.println("\nFinal ordered train consist:");
+        System.out.println(trainConsist);
     }
 }
