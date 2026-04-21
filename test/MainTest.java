@@ -4,46 +4,32 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
 
     @Test
-    void testSort_BasicAlphabeticalSorting() {
-        String[] arr = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
-        Main.sortBogieNames(arr);
-        assertArrayEquals(
-                new String[]{"AC Chair", "First Class", "General", "Luxury", "Sleeper"},
-                arr
-        );
+    void testSearch_BogieFound() {
+        String[] arr = {"BG101", "BG205", "BG309"};
+        assertTrue(Main.searchBogie(arr, "BG309"));
     }
 
     @Test
-    void testSort_UnsortedInput() {
-        String[] arr = {"Luxury", "General", "Sleeper"};
-        Main.sortBogieNames(arr);
-        assertArrayEquals(
-                new String[]{"General", "Luxury", "Sleeper"},
-                arr
-        );
+    void testSearch_BogieNotFound() {
+        String[] arr = {"BG101", "BG205", "BG309"};
+        assertFalse(Main.searchBogie(arr, "BG999"));
     }
 
     @Test
-    void testSort_AlreadySortedArray() {
-        String[] arr = {"A", "B", "C"};
-        Main.sortBogieNames(arr);
-        assertArrayEquals(new String[]{"A", "B", "C"}, arr);
+    void testSearch_FirstElementMatch() {
+        String[] arr = {"BG101", "BG205", "BG309"};
+        assertTrue(Main.searchBogie(arr, "BG101"));
     }
 
     @Test
-    void testSort_DuplicateBogieNames() {
-        String[] arr = {"Sleeper", "AC Chair", "Sleeper"};
-        Main.sortBogieNames(arr);
-        assertArrayEquals(
-                new String[]{"AC Chair", "Sleeper", "Sleeper"},
-                arr
-        );
+    void testSearch_LastElementMatch() {
+        String[] arr = {"BG101", "BG205", "BG309"};
+        assertTrue(Main.searchBogie(arr, "BG309"));
     }
 
     @Test
-    void testSort_SingleElementArray() {
-        String[] arr = {"Luxury"};
-        Main.sortBogieNames(arr);
-        assertArrayEquals(new String[]{"Luxury"}, arr);
+    void testSearch_SingleElementArray() {
+        String[] arr = {"BG777"};
+        assertTrue(Main.searchBogie(arr, "BG777"));
     }
 }
